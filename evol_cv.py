@@ -33,16 +33,16 @@ def evol_cv(I, phi0, nu, lambda_1, lambda_2, timestep, epsilon):
     return phi
 
 def Heaviside(phi, epsilon):
-    H = 0.5*(1+(2/np.pi))*np.arctan(phi/epsilon)
+    H = 0.5*(1+(2/np.pi)*np.arctan(phi/epsilon))
     return H
 
 def Delta_h(phi, epsilon):
     D = (epsilon/np.pi)/(epsilon**2+phi**2)
     return D
 
-def NeumannBoundCond(x=[]):
+def NeumannBoundCond(f):
     
-    g = x
+    g = f
     g[0,0] = g[2,2]
     g[0,-1] = g[2,-3]
     g[-1, 0] = g[-3, 2]
